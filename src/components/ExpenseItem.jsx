@@ -1,15 +1,16 @@
 import './ExpenseItem.css';
 
-const ExpenseItem = () => {
-  const date = new Date(2024, 10, 12);
-  const title = 'New Book';
-  const price = 30.99;
+const ExpenseItem = (props) => {
+  
+  console.log(props);
+  console.log(props.data);
+
   return (
     <div className="expense-item">
-      <div>{date.toString()}</div>
+      <div>{props.data.date.toString()}</div>
       <div className="expense-item__description">
-        <h2>{title}</h2>
-        <div className="expense-item__price">{price}</div>
+        <h2>{props.data.title}</h2>
+        <div className="expense-item__price">{props.data.price}</div>
       </div>
     </div>
   );
