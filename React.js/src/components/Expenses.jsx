@@ -5,9 +5,8 @@ import ExpenseItem from './ExpenseItem';
 const Expenses = (props) => {
   return (
     <Card className="expenses">
-      {props.expenses.map((expense, index) => (
-        <ExpenseItem key={index} data={expense} />
-      ))}
+      <ExpenseItem data={props.expenses[0]} />
+      <ExpenseItem data={props.expenses[0]} />
     </Card>
   );
 };
