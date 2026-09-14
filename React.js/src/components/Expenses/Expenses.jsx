@@ -5,8 +5,8 @@ import ExpenseItem from './ExpenseItem';
 const Expenses = (props) => {
   return (
     <Card className="expenses">
-      <ExpenseItem data={props.expenses[0]} />
-      <ExpenseItem data={props.expenses[0]} />
+      <ExpenseItem expenseData={props.expenses[0]} />
+      <ExpenseItem expenseData={props.expenses[1]} />
     </Card>
   );
 };
