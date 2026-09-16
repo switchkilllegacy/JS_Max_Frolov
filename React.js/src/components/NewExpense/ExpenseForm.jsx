@@ -2,35 +2,20 @@ import { useState } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = (props) => {
-  const [userInput, setuserInput] = useState({
-    enteredTitle: '',
-    enteredPrice: '',
-    enteredDate: '',
-  });
-
-  const { enteredTitle, enteredPrice, enteredDate } = userInput;
-
-  console.log(userInput);
+  const [enteredTitle, setEnteredTitle] = useState('');
+  const [enteredPrice, setEnteredPrice] = useState('');
+  const [enteredDate, setEnteredDate] = useState('');
 
   const titleChangeHandler = (event) => {
-    setuserInput({
-      ...userInput,
-      enteredTitle: event.target.value,
-    });
+    setEnteredTitle(event.target.value);
   };
 
   const priceChangeHandler = (event) => {
-    setuserInput({
-      ...userInput,
-      enteredPrice: event.target.value,
-    });
+    setEnteredPrice(event.target.value);
   };
 
   const dateChangeHandler = (event) => {
-    setuserInput({
-      ...userInput,
-      enteredDate: event.target.value,
-    });
+    setEnteredDate(event.target.value);
   };
 
   const submitHandler = (event) => {
@@ -40,11 +25,10 @@ const ExpenseForm = (props) => {
       price: enteredPrice,
       date: new Date(enteredDate),
     };
-    setuserInput({
-      enteredTitle: '',
-      enteredPrice: '',
-      enteredDate: '',
-    });
+    props.onSaveExpenseData(expenseData);
+    setEnteredTitle('');
+    setEnteredPrice('');
+    setEnteredDate('');
   };
 
   return (
