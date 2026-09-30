@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
@@ -25,7 +25,14 @@ const DYMMY_EXPENSES = [
 ];
 
 const App = () => {
-  const [expenses, setExpenses] = useState(DYMMY_EXPENSES);
+  const [expenses, setExpenses] = useState(() => {
+    const expenseFromLS = JSON.parse(localStorage.getItem('expenses'));
+    return expenseFromLS || [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+  }, [expenses]);
 
   const addExpenseHandler = (expense) => {
     setExpenses((previousExpenses) => {
